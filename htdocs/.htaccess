@@ -1,0 +1,24 @@
+###################################
+# Basic Authentication
+###################################
+#AuthUserFile /home/tvac/htpasswd_allsite
+#AuthGroupFile /dev/null
+#AuthName "WWW Please enter your ID and password"
+#AuthType Basic
+#Require valid-user
+#Satisfy any
+#Order deny,allow
+#Allow from localhost
+#moonfactory
+#Deny from all
+###################################
+# App
+###################################
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !\.(|css|js|jpg|gif|png|jpeg|ico|)$ [NC]
+    RewriteRule (.*) /index.php/$1 [L]
+</IfModule>

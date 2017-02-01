@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>{if isset($meta_title)}{$meta_title|escape}{/if}</title>
+    </head>
+    <body>
+        <div id="container">
+            <h1>{if isset($meta_title)}{$meta_title|escape}{/if}</h1>
+            <form action="" method="POST">
+                <input type="text" name="text"><BUTTON type="submit">カナ検索</BUTTON>
+            </form>
+
+            {if isset($data) && isset($data["lawyers"])}
+            <ul>
+                {foreach from=$data["lawyers"] item=item}
+                <li>{$item["lawyer_name"]|escape}</li>
+                {foreachelse}
+                <li>何もヒットしませんでした。</li>
+                {/foreach}
+            </ul>
+            {/if}
+
+            {if isset($errors)}
+                {foreach from=$errors item=item  name="errors"}
+                    {if $smarty.foreach.errors.first}
+                        <hr>
+                        <h2 class="h2">エラー詳細</h2>
+                        <div class="alert alert-danger">
+                    {/if}
+                    <p class=" alert-danger">・<strong>{$item|escape}</strong></p>
+                {/foreach}
+            </div>
+            {/if}
+        </div>
+    </body>
+</html>

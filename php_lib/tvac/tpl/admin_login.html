@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>{$meta_title|escape} | {$site_title|escape}</title>
+
+    </head>
+    <body>
+        <h1>管理サイト　ログイン</h1>
+        {if isset($errors)}
+        {foreach from=$errors item=item name=errors}
+        {if $smarty.foreach.errors.first} <p style="color:red;"> {/if}
+        ・{$item|escape}<br>
+        {if $smarty.foreach.errors.last}</p>{/if}
+        {/foreach}
+        {/if}
+        <form action="" method="POST" id="form">
+            <p> ユーザ名: <input type="TEXT" name="username" required max="255" id="username"> </p>
+            <p> PW: <input type="PASSWORD" name="password" required max="255" id="password"> </p>
+            <p> <button type="submit" >ログイン</button> </p>
+        </form>
+    </body>
+
+</html>

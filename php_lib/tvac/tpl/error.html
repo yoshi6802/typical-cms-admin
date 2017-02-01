@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>システムエラー | {if isset($meta_title)}{$meta_title|escape}{/if}</title>
+    </head>
+    <body>
+
+        <div id="container">
+            <h1>システムエラー</h1>
+            <ul>
+                {if isset($errors)}
+                    {foreach from=$errors item=item}
+                        <li>{$item|escape}</li>
+                    {foreachelse}
+                        <li>原因不明のエラーです。</li>
+                    {/foreach}
+                {/if}
+            </ul>
+        </div>
+    </body>
+</html>
